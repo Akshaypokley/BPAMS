@@ -46,6 +46,8 @@ public class RegistrationTest {
                 appRegistration.setMiddleNM("rajaram");
                 appRegistration.setLastNM("Pokley");
                 appRegistration.setUploadImage("Image/download.jpg");
+                appRegistration.setApplicantNm("");
+
                 //     driver.close(); //closing child window
                // driver.switchTo().window(parentWindow); //cntrl to parent window
             }
