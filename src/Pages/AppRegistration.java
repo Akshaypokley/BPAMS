@@ -30,13 +30,15 @@ public class AppRegistration {
     @FindBy(xpath = ".//*[@id='btnAttached']")
     WebElement AttachRegistCopy;
 
+    @FindBy(xpath = ".//*[@id='Button1']")
+    WebElement UploadImage;
    /* attachments*/
 
 
     @FindBy(xpath = ".//*[@id='imgApprovalLayout']/div/a/img")
     WebElement RegistrationLink;
 
-    @FindBy(xpath = ".//*[@id='cboInital']/option")
+    @FindBy(xpath = ".//*[@id='cboInital']")
     WebElement PriFix ;
 
     @FindBy(xpath = ".//*[@id='txtFName']")
@@ -108,6 +110,11 @@ public class AppRegistration {
         throw new IllegalStateException("This Not Home Page ");
     }
 
+    public void setUploadImage(String pho)
+    {
+        UploadImage.sendKeys(pho);
+    }
+
     public void setRegistrationLink()
     {
         RegistrationLink.click();
@@ -122,7 +129,6 @@ public class AppRegistration {
     {
         ProfilePhoto.sendKeys(Photo);
     }
-
     public void setPriFix( String pr)
     {
         Select combo = new Select (PriFix) ;

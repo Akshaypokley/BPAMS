@@ -41,9 +41,16 @@ public class RegistrationTest {
             if(!windowHandle.equals(parentWindow))
             {
                 driver.switchTo().window(windowHandle);
-             //     driver.close(); //closing child window
+                appRegistration.setPriFix("Mr");
+                appRegistration.setFirstNm("Akshay");
+                appRegistration.setMiddleNM("rajaram");
+                appRegistration.setLastNM("Pokley");
+                appRegistration.setUploadImage("Image/download.jpg");
+                //     driver.close(); //closing child window
                // driver.switchTo().window(parentWindow); //cntrl to parent window
             }
+
+
         }
     }
 
