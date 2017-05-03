@@ -119,6 +119,11 @@ public class AppRegistration {
         throw new IllegalStateException("This Not Home Page ");
     }
 
+    public void setfirmName(String firnm)
+    {
+        firmName.sendKeys(firnm);
+    }
+
     public void setApplicantNm( String applicantNm)
     {
         Select combo=new Select(ApplicantNm);
