@@ -101,6 +101,15 @@ public class AppRegistration {
     @FindBy(xpath = ".//*[@id='btnSubmit']")
     WebElement Submit;
 
+    @FindBy(xpath = ".//*[@id='cboArchitechType']")
+    WebElement ApplicantNm;
+
+    @FindBy(xpath = ".//*[@id='txtQualification']")
+    WebElement Qlification;
+
+    @FindBy(xpath =".//*[@id='txtfirm']")
+    WebElement firmName;
+
 
     public AppRegistration(WebDriver driver)
     {
@@ -108,6 +117,27 @@ public class AppRegistration {
         PageFactory.initElements(driver,this);
         if(!HomeLogo.isDisplayed())
         throw new IllegalStateException("This Not Home Page ");
+    }
+
+    public void setApplicantNm( String applicantNm)
+    {
+        Select combo=new Select(ApplicantNm);
+        combo.selectByVisibleText(applicantNm);
+    }
+
+    public void setQlification(String qlification)
+    {
+        Qlification.sendKeys(qlification);
+    }
+
+    public void setFirmName(String firmName)
+    {
+        FirstNm.sendKeys(firmName);
+    }
+
+    public void clickAcceptTC()
+    {
+        ApplicantNm.click();
     }
 
     public void setUploadImage(String pho)
