@@ -12,7 +12,7 @@ public class initExtentReport {
     public static  ExtentReports init()
 
     {
-            extent=new ExtentReports("C:\\Users\\AKSHAY\\IdeaProjects\\EDUSEC\\ExtenReport\\extent.html",false);
+            extent=new ExtentReports("E:\\Akshay85\\BPAMS\\ExtenReport\\extent.html",false);
         return extent;
     }
 }

@@ -27,8 +27,14 @@ public class AppRegistration {
     @FindBy(xpath =".//*[@id='IdattachIdproof']")
     WebElement AttachIDPrrof;
 
+    @FindBy(id ="RadAsyncUpload1file0")
+    WebElement IdDoc;
+
     @FindBy(xpath = ".//*[@id='btnAttached']")
     WebElement AttachRegistCopy;
+
+    @FindBy(xpath =".//*[@id='RadAsyncUpload1silverlight02']")
+    WebElement RegistCopydoc;
 
     @FindBy(xpath = ".//*[@id='Button1']")
     WebElement UploadImage;
@@ -53,13 +59,13 @@ public class AppRegistration {
     @FindBy(xpath = ".//*[@id='txtAdd']")
     WebElement PostalAddress;
 
-    @FindBy(xpath = ".//*[@id='txtCity']")
+    @FindBy(xpath = ".//*[@id='cboState']")
     WebElement State;
 
     @FindBy(xpath = ".//*[@id='txtCity']")
     WebElement City;
 
-    @FindBy(xpath = ".//*[@id='txtEmail']")
+    @FindBy(xpath = ".//*[@id='txtZip']")
     WebElement PinCode;
 
     @FindBy(xpath = ".//*[@id='txtMob']")
@@ -68,7 +74,7 @@ public class AppRegistration {
     @FindBy(xpath = ".//*[@id='txtEmail']")
     WebElement Email;
 
-    @FindBy(xpath = ".//*[@id='cboIdProofType']/option")
+    @FindBy(xpath = ".//*[@id='cboIdProofType']")
     WebElement IdProf;
 
     @FindBy(xpath = ".//*[@id='txtTown']")
@@ -119,6 +125,27 @@ public class AppRegistration {
         throw new IllegalStateException("This Not Home Page ");
     }
 
+    public void ClickIdDoc()
+    {
+        IdDoc.click();
+    }
+
+    public void ClickRegistCopydoc()
+    {
+        RegistCopydoc.click();
+    }
+
+    public void ClickAttachIDPrrof()
+    {
+        AttachIDPrrof.click();
+    }
+
+    public void ClickAttachRegistCopy()
+    {
+        AttachRegistCopy.click();
+    }
+
+
     public void setfirmName(String firnm)
     {
         firmName.sendKeys(firnm);
@@ -127,7 +154,7 @@ public class AppRegistration {
     public void setApplicantNm( String applicantNm)
     {
         Select combo=new Select(ApplicantNm);
-        combo.selectByVisibleText(applicantNm);
+        combo.selectByValue(applicantNm);
     }
 
     public void setQlification(String qlification)
@@ -142,7 +169,7 @@ public class AppRegistration {
 
     public void clickAcceptTC()
     {
-        ApplicantNm.click();
+        AcceptTC.click();
     }
 
     public void setUploadImage(String pho)
@@ -193,7 +220,7 @@ public class AppRegistration {
     public void setState(String States)
     {
         Select combo=new Select(State);
-        combo.selectByVisibleText(States);
+        combo.selectByValue(States);
 
     }
 
@@ -220,7 +247,7 @@ public class AppRegistration {
     public void setIdProf(String ID)
     {
         Select combo=new Select(IdProf);
-        combo.selectByVisibleText(ID);
+        combo.selectByValue(ID);
     }
 
     public void setRegCertifiScannCopy(String RegCopy)

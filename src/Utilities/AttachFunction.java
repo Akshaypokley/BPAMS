@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 public class AttachFunction {
     
     WebDriver driver;
-    public static void AttachFuntn(String FilePath) throws AWTException {
+    public static void AttachFuntn(WebDriver driver,String FilePath) throws AWTException {
         StringSelection uploadphoto = new StringSelection(FilePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(uploadphoto, null);
         try {
