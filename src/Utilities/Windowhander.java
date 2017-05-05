@@ -9,6 +9,7 @@ import java.util.Set;
  */
 public class Windowhander {
     static WebDriver driver;
+    static String windowHandle;
     public static void NewWindow(WebDriver driver) {
         String parentWindow = driver.getWindowHandle();
 
@@ -17,6 +18,14 @@ public class Windowhander {
             if (!windowHandle.equals(parentWindow)) {
                 driver.switchTo().window(windowHandle);
             }
+
         }
+
+
+    }
+    public static WebDriver LastWindow()
+    {
+        driver.switchTo().window(windowHandle);
+        return driver;
     }
 }
