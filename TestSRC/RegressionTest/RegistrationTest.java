@@ -225,7 +225,7 @@ public class RegistrationTest {
 
                     AlerFun(driver);
                     try {
-                                                        
+
                         String Expected = "You have been registered successfully !!!";
                         if ((ExpectedConditions.alertIsPresent()) == null) {
                             System.out.println("alert was not present");
