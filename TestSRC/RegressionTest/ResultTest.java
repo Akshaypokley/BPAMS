@@ -5,16 +5,13 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.*;
+import org.junit.Before;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.*;
 import java.util.NoSuchElementException;
@@ -25,17 +22,24 @@ import static Utilities.OpenBrowser.GetUrl;
 import static Utilities.OpenBrowser.openBrowser;
 import static Utilities.ResultFunction.ShowR;
 import static Utilities.Windowhander.NewWindow;
+import java.io.FileInputStream;
+import java.io.IOException;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 /**
  * Created by laxmikant on 06/05/2017.
  */
 public class ResultTest {
     WebDriver driver;
-
-    String f;
     String result;
-    int roI=0;
-    int r;
+    String alertmessage;
+    int i;
+public static String status="Pass";
+    @BeforeMethod
+    public void l() {
+    }
 
     @Test(dataProvider = "UserInput")
     public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException
@@ -63,12 +67,14 @@ public class ResultTest {
                 } else {
 
                     Alert alert = driver.switchTo().alert();
-                    String alertmessage = driver.switchTo().alert().getText();
-                    System.out.println(alertmessage);
-                    f = alertmessage;
+                    alertmessage = driver.switchTo().alert().getText();
                     alert.accept();
+                    System.out.println(alertmessage);
                     Assert.assertEquals(alertmessage, Expected, "Test pass");
                     result = "Pass";
+
+
+                    //    ShowR(driver,result, alertmessage);
 
                 }
             } catch (NoSuchElementException e) {
@@ -79,14 +85,11 @@ public class ResultTest {
         } catch (AssertionError e) {
             result = "Fail";// System.out.println(e);
 
-        }
-      //  for(int i=-1;;i++)
-        int i=1;
-      ShowR(driver,i,result,f,6,5);
-        i++;
-        System.out.println(i);
-    }
+}
 
+
+
+    }
 
     @DataProvider
     public Object[][] UserInput() throws IOException {
@@ -154,9 +157,36 @@ public class ResultTest {
     }
 
 
+    @AfterTest
+    public void h() throws IOException, BiffException {
+
+        String FilePath = "ExcelData/n.xls";
+        FileInputStream fs = new FileInputStream(FilePath);
+        Workbook wb = Workbook.getWorkbook(fs);
+
+        // TO get the access to the sheet
+        Sheet sh = wb.getSheet("n");
+
+        // To get the number of rows present in sheet
+        int totalNoOfRows = sh.getRows();
+
+        // To get the number of columns present in sheet
+        int totalNoOfCols = sh.getColumns();
+
+        for (int i = 1; i < totalNoOfRows; i++) {
+        //
+         /*//   HSSFCell Actual = row.createCell(5);
+
+            Actual.setCellValue(alertmessage);
 
 
+            for (int j = 1; j < totalNoOfCols; j++) {
+                System.out.print(sh.getCell(j, i).getContents() + "\t");
+
+           */
 
 
+            }
 
-}
+        }
+    }     
