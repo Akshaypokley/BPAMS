@@ -9,65 +9,38 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.WebDriver;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by laxmikant on 06/05/2017.
  */
 public class ResultFunction {
-   static  WebDriver driver;
-    public static  void ShowR( WebDriver driver,int i,String R,String A,int cell,int cell2) throws IOException {
+    static WebDriver driver;
+
+    public static void ShowR(WebDriver driver, String r,String A) throws IOException {
+
         FileInputStream fileInputStream = new FileInputStream("ExcelData/n.xls");
 
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet sheet = workbook.getSheet("n");
+        HSSFSheet worksheet = workbook.getSheet("n");
 
-        int RowCount = sheet.getPhysicalNumberOfRows();
+        int rowCount = worksheet.getPhysicalNumberOfRows();
 
+ for (int i = 1; i < rowCount;i++) {
 
-        // for(int roi=1;roi<RowCount;roi++)
-        {
+            HSSFRow row = worksheet.getRow(i);
 
-            HSSFRow row = sheet.getRow( i);
-
-            String Re = "Pass";
-            CellStyle style = workbook.createCellStyle();
-            HSSFCell resultCell = row.createCell(cell);
-            resultCell.setCellValue(R);
-
-            if (R != Re) {
-                style.setFillForegroundColor(IndexedColors.RED.getIndex());
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-                resultCell.setCellStyle(style);
-            } else {
-                style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-                resultCell.setCellStyle(style);
-            }
-
-            HSSFCell ActualCell = row.createCell(cell2);
-            ActualCell.setCellValue(A);
-            if (R != Re) {
-                style.setFillForegroundColor(IndexedColors.RED.getIndex());
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-                resultCell.setCellStyle(style);
-            } else {
-                style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
-                style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-                resultCell.setCellStyle(style);
-            }
-
-
-            FileOutputStream fout = new FileOutputStream(new File("ExcelData/r8.xls"));
+            HSSFCell Actual = row.createCell(5);
+            Actual.setCellValue(A);
+           /* String DateStr = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
+            String ER = "nh" + DateStr + ".xls";
+            String imagePath = "ExcelData/" + ER;*/
+            FileOutputStream fout = new FileOutputStream("ExcelData/n1.xls");
             workbook.write(fout);
             fout.close();
-        }
-
-    }
 
 
 
-
-
-
-}
+    }  }}

@@ -1,6 +1,8 @@
 package RegressionTest;
 
 import Pages.AppRegistration;
+import jxl.write.Label;
+import jxl.write.WriteException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -31,18 +33,20 @@ import jxl.read.biff.BiffException;
 /**
  * Created by laxmikant on 06/05/2017.
  */
-public class ResultTest {
+public class ResultTest extends ExcelsheetTest {
     WebDriver driver;
     String result;
-    String alertmessage;
+
     int i;
 public static String status="Pass";
-    @BeforeMethod
+    public HSSFWorkbook workbook;
+   /* @BeforeMethod
     public void l() {
     }
-
+*/    private static int n = 0;
+    private static int j = 0;
     @Test(dataProvider = "UserInput")
-    public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException
+    public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException, WriteException
 
     {
         driver = openBrowser("chrome");
@@ -67,13 +71,30 @@ public static String status="Pass";
                 } else {
 
                     Alert alert = driver.switchTo().alert();
-                    alertmessage = driver.switchTo().alert().getText();
+                  String  alertmessage = driver.switchTo().alert().getText();
                     alert.accept();
                     System.out.println(alertmessage);
-                    Assert.assertEquals(alertmessage, Expected, "Test pass");
-                    result = "Pass";
 
+                    int LastRow = ++n;
+                    {
+                        TestCase = alertmessage;
 
+                        Label l4 = new Label(5, LastRow, TestCase);
+                        WriteTableS.addCell(l4);
+                      //  Assert.assertEquals(alertmessage, Expected, "Test pass");
+                        int LastRow1 = ++j;
+
+                        if(alertmessage.equals(Expected))
+                        {
+
+                            Label l5 = new Label(6,LastRow1, "Pass");
+                            WriteTableS.addCell(l5);
+                        }else
+                        {
+                            Label l5 = new Label(6, LastRow1, "Fail");
+                            WriteTableS.addCell(l5);
+                        }
+                    }
                     //    ShowR(driver,result, alertmessage);
 
                 }
@@ -96,7 +117,7 @@ public static String status="Pass";
 
         FileInputStream fileInputStream = new FileInputStream("ExcelData/n.xls");
 
-        HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
+        workbook = new HSSFWorkbook(fileInputStream);
 
         HSSFSheet sheet = workbook.getSheet("n");
 
@@ -156,6 +177,7 @@ public static String status="Pass";
 
     }
 
+/*
 
     @AfterTest
     public void h() throws IOException, BiffException {
@@ -175,7 +197,9 @@ public static String status="Pass";
 
         for (int i = 1; i < totalNoOfRows; i++) {
         //
-         /*//   HSSFCell Actual = row.createCell(5);
+         */
+/*//*
+/   HSSFCell Actual = row.createCell(5);
 
             Actual.setCellValue(alertmessage);
 
@@ -183,10 +207,12 @@ public static String status="Pass";
             for (int j = 1; j < totalNoOfCols; j++) {
                 System.out.print(sh.getCell(j, i).getContents() + "\t");
 
-           */
+           *//*
+
 
 
             }
+*/
 
-        }
-    }     
+
+    }
