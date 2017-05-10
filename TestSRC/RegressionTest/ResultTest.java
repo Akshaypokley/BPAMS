@@ -8,27 +8,24 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.junit.Before;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import static Utilities.AlertFunction.AlerFun;
 import static Utilities.OpenBrowser.GetUrl;
 import static Utilities.OpenBrowser.openBrowser;
-import static Utilities.ResultFunction.ShowR;
 import static Utilities.Windowhander.NewWindow;
+import static jxl.format.Colour.GREEN;
+import static jxl.format.Colour.RED;
+
 import java.io.FileInputStream;
 import java.io.IOException;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
 
 /**
  * Created by laxmikant on 06/05/2017.
@@ -43,8 +40,10 @@ public static String status="Pass";
    /* @BeforeMethod
     public void l() {
     }
-*/    private static int n = 0;
-    private static int j = 0;
+*/    private static int n = 1;
+    private static int j = 1;
+    private static int h = 0;
+    private static int lastrow;
     @Test(dataProvider = "UserInput")
     public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException, WriteException
 
@@ -87,13 +86,17 @@ public static String status="Pass";
                         if(alertmessage.equals(Expected))
                         {
 
-                            Label l5 = new Label(6,LastRow1, "Pass");
+
+                            Label l5 = new Label(6,LastRow1, "Pass",cellFormat);
                             WriteTableS.addCell(l5);
                         }else
                         {
-                            Label l5 = new Label(6, LastRow1, "Fail");
+
+                            Label l5 = new Label(6, LastRow1, "Fail",cellFormat2);
                             WriteTableS.addCell(l5);
                         }
+                        Assert.assertEquals(alertmessage, Expected, "Test pass");
+                      lastrow=++h;
                     }
                     //    ShowR(driver,result, alertmessage);
 
@@ -104,8 +107,11 @@ public static String status="Pass";
             }
 
         } catch (AssertionError e) {
-            result = "Fail";// System.out.println(e);
 
+           /* result = "Fail";System.out.println();
+            lastrow=++h;
+            Label l6 = new Label(7, lastrow,);
+            WriteTableS.addCell(l6);*/
 }
 
 
@@ -123,51 +129,51 @@ public static String status="Pass";
 
         int RowCount = sheet.getPhysicalNumberOfRows();
 
-        String data[][] = new String[RowCount - 1][5];
+        String data[][] = new String[RowCount - 2][5];
 
-        for (int i = 1; i < RowCount; i++)
+        for (int i = 2; i < RowCount; i++)
 
         {
             HSSFRow row = sheet.getRow(i);
 
             HSSFCell PrifixCell = row.getCell(0);
             if (PrifixCell == null) {
-                data[i - 1][0] = "";
+                data[i - 2][0] = "";
             } else {
                 PrifixCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][0] = PrifixCell.getStringCellValue();
+                data[i - 2][0] = PrifixCell.getStringCellValue();
             }
 
 
             HSSFCell FirstName = row.getCell(1);
             if (FirstName == null) {
-                data[i - 1][1] = "";
+                data[i - 2][1] = "";
             } else {
                 FirstName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][1] = FirstName.getStringCellValue();
+                data[i - 2][1] = FirstName.getStringCellValue();
             }
 
             HSSFCell MiddelName = row.getCell(2);
             if (MiddelName == null) {
-                data[i - 1][2] = "";
+                data[i - 2][2] = "";
             } else {
                 MiddelName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][2] = MiddelName.getStringCellValue();
+                data[i - 2][2] = MiddelName.getStringCellValue();
             }
             HSSFCell LastName = row.getCell(3);
             if (LastName == null) {
-                data[i - 1][3] = "";
+                data[i - 2][3] = "";
             } else {
                 LastName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][3] = LastName.getStringCellValue();
+                data[i - 2][3] = LastName.getStringCellValue();
             }
 
             HSSFCell Expeted = row.getCell(4);
             if (Expeted == null) {
-                data[i - 1][4] = "";
+                data[i - 2][4] = "";
             } else {
                 Expeted.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][4] = Expeted.getStringCellValue();
+                data[i - 2][4] = Expeted.getStringCellValue();
             }
 
 
