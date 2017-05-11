@@ -22,7 +22,8 @@ public class AlertFunction {
         //System.out.println("alert was not present");
     } else {
          // System.out.println("alert was present");
-          Alert alert = driver.switchTo().alert();
+
+            Alert alert = driver.switchTo().alert();
           String AlertMessage =  driver.switchTo().alert().getText();
             test.log(LogStatus.INFO, AlertMessage);
          // alert.accept();

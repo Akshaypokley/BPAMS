@@ -87,12 +87,12 @@ public static String status="Pass";
                         {
 
 
-                            Label l5 = new Label(6,LastRow1, "Pass",cellFormat);
+                            Label l5 = new Label(6,LastRow1, "PASS",cellFormat);
                             WriteTableS.addCell(l5);
                         }else
                         {
 
-                            Label l5 = new Label(6, LastRow1, "Fail",cellFormat2);
+                            Label l5 = new Label(6, LastRow1, "FAIL",cellFormat2);
                             WriteTableS.addCell(l5);
                         }
                         Assert.assertEquals(alertmessage, Expected, "Test pass");

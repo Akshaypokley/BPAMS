@@ -6,6 +6,7 @@ import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import jxl.write.*;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -26,6 +27,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.awt.Label;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -47,10 +49,13 @@ import static Utilities.Windowhander.NewWindow;
 /**
  * Created by AKSHAY on 01/05/2017.
  */
-public class RegistrationTest {
+public class RegistrationTest extends ExcelsheetTest{
 
     WebDriver driver;
     ExtentReports extent ;
+    private static int n = 0;
+    private static int j = 0;
+    private static int h = 0;
     @BeforeMethod()
     public void LoadBrowser() {
         extent = initExtentReport.init();
@@ -62,8 +67,8 @@ public class RegistrationTest {
     public void RegistratTest(String Prifi, String FirstNM,String MiddNM ,String LastNm,
                                String Quallification, String FirmNm, String PostalAdress, String State,
                               String City, String Pincode, String MobileNo, String Email, String IDproof, String REgNo/*,String ValidDate*/,
-                              String LoginName, String Password, String RePassword, String ApplicationCat
-    ) throws IOException, AWTException, InterruptedException, ParseException
+                              String LoginName, String Password, String RePassword, String ApplicationCat,String EX
+    ) throws IOException, AWTException, InterruptedException, ParseException, WriteException
 
     {
         ExtentTest test = extent.startTest("Registration Page Test", "To Test the functionalty of Submit button");
@@ -215,7 +220,7 @@ public class RegistrationTest {
             driver.switchTo().window(WinHandleBefore1);
 
             appRegistration.setRegitrationNo(REgNo); test.log(LogStatus.INFO, " Set RegiNO");
-            DateFun(driver,"06/5/2017");
+            DateFun(driver,"11/5/2017");
                     appRegistration.setLoginNm(LoginName); test.log(LogStatus.INFO, " Set UserName");
                     appRegistration.setPassword(Password); test.log(LogStatus.INFO, " Set Password");
                     appRegistration.setRePass(RePassword); test.log(LogStatus.INFO, " Set RePassword");
@@ -226,7 +231,7 @@ public class RegistrationTest {
                     AlerFun(driver);
                     try {
 
-                        String Expected = "You have been registered successfully !!!";
+                       // String Expected = "You have been registered successfully !!!";
                         if ((ExpectedConditions.alertIsPresent()) == null) {
                             System.out.println("alert was not present");
                         } else {
@@ -234,10 +239,33 @@ public class RegistrationTest {
                             Alert alert = driver.switchTo().alert();
                             String Actual = driver.switchTo().alert().getText();
                             alert.accept();
-                            Assert.assertEquals(Actual, Expected, "Test pass");
-                            test.log(LogStatus.PASS, "Test Pass");
+                           // Assert.assertEquals(Actual, Expected, "Test pass");
+                            /*test.log(LogStatus.PASS, "Test Pass");
                             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./Registration/"+takeScreenshot(driver)));
+                  */          int LastRow = ++n;
+                            {
+                                TestCase =Actual;
 
+                                jxl.write.Label l4 = new jxl.write.Label(20, LastRow, TestCase);
+                                WriteTableS.addCell(l4);
+                                //  Assert.assertEquals(alertmessage, Expected, "Test pass");
+                                int LastRow1 = ++j;
+
+                                if(Actual.equals(EX))
+                                {
+
+
+                                    jxl.write.Label l5 = new jxl.write.Label(21,LastRow1, "PASS",cellFormat);
+                                    WriteTableS.addCell(l5);
+                                }else
+                                {
+
+                                    jxl.write.Label l5 = new jxl.write.Label(21, LastRow1, "FAIL",cellFormat2);
+                                    WriteTableS.addCell(l5);
+                                }
+                                Assert.assertEquals(Actual,EX, "Test pass");
+                                //lastrow=++h;
+                            }
                                            }
 
                         } catch (NoSuchElementException e) {
@@ -273,7 +301,7 @@ public class RegistrationTest {
 
         int RowCount = sheet.getPhysicalNumberOfRows();
 
-        String data[][] = new String[RowCount - 1][18];
+        String data[][] = new String[RowCount - 1][19];
 
         for (int i = 1; i < RowCount; i++)
 
@@ -420,6 +448,14 @@ public class RegistrationTest {
             } else {
                 Applican.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][17] = Applican.getStringCellValue();
+            }
+
+            HSSFCell Expeted= row.getCell(18);
+            if (Expeted == null) {
+                data[i - 1][18] = "";
+            } else {
+                Expeted.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][18] = Expeted.getStringCellValue();
             }
         }
         return data;

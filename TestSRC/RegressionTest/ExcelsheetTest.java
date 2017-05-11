@@ -36,15 +36,15 @@ public class ExcelsheetTest {
     public Sheet sheet;
     @BeforeTest
     public void ExcelWdata() throws IOException, BiffException, WriteException {
-        FileInputStream fis=new FileInputStream("ExcelData/n.xls");
+        FileInputStream fis=new FileInputStream("ExcelData/RegistrationInput.xls");
         Workbook workbook=Workbook.getWorkbook(fis);
 
-      sheet=workbook.getSheet("n");
+      sheet=workbook.getSheet("RegistrationInput");
         int noRows=sheet.getRows();
         String InputData[][]=new String[sheet.getRows()][sheet.getColumns()];
         System.out.println(noRows);
 
-        FileOutputStream fos=new FileOutputStream("ExcelData/outPut.xls");
+        FileOutputStream fos=new FileOutputStream("ExcelData/TestResult.xls");
         System.out.println("Create New File");
 
         workbookcopy=workbook.createWorkbook(fos);
@@ -66,17 +66,17 @@ public class ExcelsheetTest {
             for (int k=0;k<sheet.getColumns();k++)
             {
                 InputData[i][k]=sheet.getCell(k,i).getContents();
-                Label l1=new Label(k,i,InputData[i][k]);
-                Label l7=new Label(0,0,"Test Report",cellFormat3);
+               Label l1=new Label(k,i,InputData[i][k]);
+             //   Label l7=new Label(0,0,"Test Report",cellFormat3);
                 cellFont2.setColour(RED);
-                Label l2=new Label(5,1,"AlertMessage");
-                Label l3=new Label(6,1,"Result");
+                Label l2=new Label(20,0,"Actual Message");
+                Label l3=new Label(21,0,"Result");
 
                // Label l6=new Label(7,,"TestCase Fail Due To");
-                WriteTableS.addCell(l1);
+               WriteTableS.addCell(l1);
                 WriteTableS.addCell(l2);
                 WriteTableS.addCell(l3);
-                WriteTableS.addCell(l7);
+              //  WriteTableS.addCell(l7);
               //  WriteTableS.addCell(l6);
             }
         }
