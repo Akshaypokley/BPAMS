@@ -114,7 +114,7 @@ public class AppRegistration {
     WebElement Qlification;
 
     @FindBy(xpath =".//*[@id='txtfirm']")
-    WebElement firmName;
+    WebElement FirmName;
 
 
     public AppRegistration(WebDriver driver)
@@ -146,10 +146,10 @@ public class AppRegistration {
     }
 
 
-    public void setfirmName(String firnm)
+    /*public void setfirmName(String firnm)
     {
         firmName.sendKeys(firnm);
-    }
+    }*/
 
     public void setApplicantNm( String applicantNm)
     {
@@ -164,7 +164,7 @@ public class AppRegistration {
 
     public void setFirmName(String firmName)
     {
-        FirstNm.sendKeys(firmName);
+        FirmName.sendKeys(firmName);
     }
 
     public void clickAcceptTC()

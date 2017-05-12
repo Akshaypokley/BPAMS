@@ -12,7 +12,7 @@
 <body>
 <h1>Regression</h1>
 <p>
-  Test duration: 43.148s
+  Test duration: 183.799s
 </p>
 
 
@@ -28,24 +28,23 @@
                   RegistratTest
       </td>
   <td class="duration">
-    34.117s
+    38.071s
   </td>
   <td class="result">
         
-          <i>Method arguments: </i><span class="arguments">"Mr", "tr", "rt", "rtrt", "BE", "dfdsf ", "sfsdfsd", "Karnataka", "Pune", "223311", "8983675455", "df@d.d", "2", "45345345345", "rewre34324rr", "Akshay85", "Akshay85", "6"</span><br />
+          <i>Method arguments: </i><span class="arguments">"Mr", "sdf", "fsdf", "rtrt", "sdf", "sdf", "dsff", "Karnataka", "Pune", "223311", "8983675455", "df@d.d", "2", "45333345345", "dsdfsd", "Akshay85", "Akshay85", "6", "Registration No. is already Registered"</span><br />
     
         
 
-        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>org.openqa.selenium.WebDriverException: chrome not reachable<br/>
+        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>org.openqa.selenium.NoAlertPresentException: no alert open<br/>
 &nbsp; (Session info: chrome=57.0.2987.133)<br/>
 &nbsp; (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)<br/>
-Command duration or timeout: 4.07 seconds<br/>
+Command duration or timeout: 70 milliseconds<br/>
 Build info: version: &apos;unknown&apos;, revision: &apos;5234b32&apos;, time: &apos;2017-03-10 09:00:17 -0800&apos;<br/>
 System info: host: &apos;SEPL61&apos;, ip: &apos;192.168.1.96&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_131&apos;<br/>
 Driver info: org.openqa.selenium.chrome.ChromeDriver<br/>
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\LAXMIK~1\AppData\Local\Temp\scoped_dir3768_16678}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]<br/>
-Session ID: a219254fff903c925fedcbed3e6597fb<br/>
-*** Element info: {Using=id, value=RadAsyncUpload1file0}</b></a><br />
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\LAXMIK~1\AppData\Local\Temp\scoped_dir5212_17646}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]<br/>
+Session ID: 21a8c7a6d5478514074b9230f271b4ee</b></a><br />
     <div class="stackTrace" id="exception-0">
               sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br />
               sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br />
@@ -54,11 +53,10 @@ Session ID: a219254fff903c925fedcbed3e6597fb<br/>
               org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:216)<br />
               org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:168)<br />
               org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:420)<br />
-              org.openqa.selenium.By$ById.findElement(By.java:218)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)<br />
-              RegressionTest.RegistrationTest.RegistratTest(RegistrationTest.java:180)<br />
+              org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:661)<br />
+              org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.alert(RemoteWebDriver.java:990)<br />
+              Utilities.AlertFunction.AlerFun(AlertFunction.java:26)<br />
+              RegressionTest.RegistrationTest.RegistratTest(RegistrationTest.java:231)<br />
               sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
               sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
               sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
@@ -88,6 +86,58 @@ Session ID: a219254fff903c925fedcbed3e6597fb<br/>
       </table>
 
 
+  <table class="resultsTable">
+    <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
+          <tr>
+        <td colspan="3" class="group">RegressionTest.RegistrationTest</td>
+      </tr>
+            
+<tr>
+  <td class="method">
+                  RegistratTest
+      </td>
+  <td class="duration">
+    38.362s
+  </td>
+  <td class="result">
+        
+          <i>Method arguments: </i><span class="arguments">"Mr", "sdf", "fsdf", "sdf", "sdf", "sdf", "dsff", "Karnataka", "Pune", "", "8983675455", "df@d.d", "2", "45334345345", "dsdfsgv", "Akshay85", "Akshay85", "6", "Enter Pin Code"</span><br />
+    
+        
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  RegistratTest
+      </td>
+  <td class="duration">
+    38.721s
+  </td>
+  <td class="result">
+        
+          <i>Method arguments: </i><span class="arguments">"Mr", "sdf", "fsdf", "", "sdf", "sdf", "dsff", "Karnataka", "Pune", "223311", "8983675455", "df@d.d", "2", "4533335345", "", "Akshay85", "Akshay85", "6", "Please Enter Last Name."</span><br />
+    
+        
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  RegistratTest
+      </td>
+  <td class="duration">
+    39.576s
+  </td>
+  <td class="result">
+        
+          <i>Method arguments: </i><span class="arguments">"Mr", "tr", "rt", "rtrt", "BE", "dfdsf ", "sfsdfsd", "Karnataka", "Pune", "223311", "8983675455", "df@d.d", "2", "4534534545", "rewregfhgh34324rr", "Akshay85", "Akshay85", "6", "You have been registered successfully !!!"</span><br />
+    
+        
+
+      </td>
+</tr>
+      </table>
   
 </body>
 </html>

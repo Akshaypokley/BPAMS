@@ -67,16 +67,16 @@ public class ExcelsheetTest {
             {
                 InputData[i][k]=sheet.getCell(k,i).getContents();
                Label l1=new Label(k,i,InputData[i][k]);
-             //   Label l7=new Label(0,0,"Test Report",cellFormat3);
+              Label l7=new Label(0,0,"Test Report",cellFormat3);
                 cellFont2.setColour(RED);
-                Label l2=new Label(20,0,"Actual Message");
-                Label l3=new Label(21,0,"Result");
+                Label l2=new Label(19,1,"Actual Message");
+                Label l3=new Label(20,1,"Result");
 
                // Label l6=new Label(7,,"TestCase Fail Due To");
                WriteTableS.addCell(l1);
                 WriteTableS.addCell(l2);
                 WriteTableS.addCell(l3);
-              //  WriteTableS.addCell(l7);
+               WriteTableS.addCell(l7);
               //  WriteTableS.addCell(l6);
             }
         }

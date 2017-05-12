@@ -53,9 +53,9 @@ public class RegistrationTest extends ExcelsheetTest{
 
     WebDriver driver;
     ExtentReports extent ;
-    private static int n = 0;
-    private static int j = 0;
-    private static int h = 0;
+    private static int n = 1;
+    private static int j = 1;
+    private static int h = 1;
     @BeforeMethod()
     public void LoadBrowser() {
         extent = initExtentReport.init();
@@ -220,7 +220,7 @@ public class RegistrationTest extends ExcelsheetTest{
             driver.switchTo().window(WinHandleBefore1);
 
             appRegistration.setRegitrationNo(REgNo); test.log(LogStatus.INFO, " Set RegiNO");
-            DateFun(driver,"11/5/2017");
+            DateFun(driver,"13/5/2017");
                     appRegistration.setLoginNm(LoginName); test.log(LogStatus.INFO, " Set UserName");
                     appRegistration.setPassword(Password); test.log(LogStatus.INFO, " Set Password");
                     appRegistration.setRePass(RePassword); test.log(LogStatus.INFO, " Set RePassword");
@@ -228,6 +228,7 @@ public class RegistrationTest extends ExcelsheetTest{
                     appRegistration.clickAcceptTC(); test.log(LogStatus.INFO, "Accept Terms and Condition");
                     appRegistration.ClickSubmit(); test.log(LogStatus.INFO, "Click on Submit Button");
 
+                    Thread.sleep(70);
                     AlerFun(driver);
                     try {
 
@@ -303,159 +304,159 @@ public class RegistrationTest extends ExcelsheetTest{
 
         String data[][] = new String[RowCount - 1][19];
 
-        for (int i = 1; i < RowCount; i++)
+        for (int i = 2; i < RowCount; i++)
 
         {
             HSSFRow row = sheet.getRow(i);
 
             HSSFCell PrifixCell = row.getCell(0);
             if (PrifixCell == null) {
-                data[i - 1][0] = "";
+                data[i - 2][0] = "";
             } else {
                 PrifixCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][0] = PrifixCell.getStringCellValue();
+                data[i - 2][0] = PrifixCell.getStringCellValue();
             }
 
 
             HSSFCell FirstName = row.getCell(1);
             if (FirstName == null) {
-                data[i - 1][1] = "";
+                data[i - 2][1] = "";
             } else {
                 FirstName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][1] = FirstName.getStringCellValue();
+                data[i - 2][1] = FirstName.getStringCellValue();
             }
 
             HSSFCell MiddelName = row.getCell(2);
             if (MiddelName == null) {
-                data[i - 1][2] = "";
+                data[i - 2][2] = "";
             } else {
                 MiddelName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][2] = MiddelName.getStringCellValue();
+                data[i - 2][2] = MiddelName.getStringCellValue();
             }
             HSSFCell LastName = row.getCell(3);
             if (LastName == null) {
-                data[i - 1][3] = "";
+                data[i - 2][3] = "";
             } else {
                 LastName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][3] = LastName.getStringCellValue();
+                data[i - 2][3] = LastName.getStringCellValue();
             }
 
             HSSFCell qualification = row.getCell(4);
             if (qualification == null) {
-                data[i - 1][4] = "";
+                data[i - 2][4] = "";
             } else {
                 qualification.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][4] = qualification.getStringCellValue();
+                data[i - 2][4] = qualification.getStringCellValue();
             }
             HSSFCell FirmName = row.getCell(5);
             if (FirmName == null) {
-                data[i - 1][5] = "";
+                data[i - 2][5] = "";
             } else {
                 FirmName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][5] = FirmName.getStringCellValue();
+                data[i - 2][5] = FirmName.getStringCellValue();
             }
             HSSFCell PostalAddress = row.getCell(6);
             if (PostalAddress == null) {
-                data[i - 1][6] = "";
+                data[i - 2][6] = "";
             } else {
                 PostalAddress.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][6] = PostalAddress.getStringCellValue();
+                data[i - 2][6] = PostalAddress.getStringCellValue();
             }
 
 
             HSSFCell State = row.getCell(7);
             if (State == null) {
-                data[i - 1][7] = "";
+                data[i - 2][7] = "";
             } else {
                 State.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][7] = State.getStringCellValue();
+                data[i - 2][7] = State.getStringCellValue();
             }
 
             HSSFCell City= row.getCell(8);
             if (City == null) {
-                data[i - 1][8] = "";
+                data[i - 2][8] = "";
             } else {
                 City.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][8] = City.getStringCellValue();
+                data[i - 2][8] = City.getStringCellValue();
             }
             HSSFCell PinCode= row.getCell(9);
             if (PinCode == null) {
-                data[i - 1][9] = "";
+                data[i - 2][9] = "";
             } else {
                 PinCode.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][9] = PinCode.getStringCellValue();
+                data[i - 2][9] = PinCode.getStringCellValue();
             }
 
             HSSFCell MobileNo= row.getCell(10);
             if (MobileNo == null) {
-                data[i - 1][10] = "";
+                data[i - 2][10] = "";
             } else {
                 MobileNo.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][10] = MobileNo.getStringCellValue();
+                data[i - 2][10] = MobileNo.getStringCellValue();
             }
             HSSFCell Email= row.getCell(11);
             if (Email == null) {
-                data[i - 1][11] = "";
+                data[i - 2][11] = "";
             } else {
                 Email.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][11] = Email.getStringCellValue();
+                data[i - 2][11] = Email.getStringCellValue();
             }
 
             HSSFCell IdProf= row.getCell(12);
             if (IdProf == null) {
-                data[i - 1][12] = "";
+                data[i - 2][12] = "";
             } else {
                 IdProf.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][12] = IdProf.getStringCellValue();
+                data[i - 2][12] = IdProf.getStringCellValue();
             }
 
             HSSFCell RegiNo= row.getCell(13);
             if (RegiNo == null) {
-                data[i - 1][13] = "";
+                data[i - 2][13] = "";
             } else {
                 RegiNo.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][13] = RegiNo.getStringCellValue();
+                data[i - 2][13] = RegiNo.getStringCellValue();
             }
 
             HSSFCell LoginName= row.getCell(14);
             if (LoginName == null) {
-                data[i - 1][14] = "";
+                data[i - 2][14] = "";
             } else {
                 LoginName.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][14] = LoginName.getStringCellValue();
+                data[i - 2][14] = LoginName.getStringCellValue();
             }
 
 
             HSSFCell LoginPassword= row.getCell(15);
             if (LoginPassword == null) {
-                data[i - 1][15] = "";
+                data[i - 2][15] = "";
             } else {
                 LoginPassword.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][15] = LoginPassword.getStringCellValue();
+                data[i - 2][15] = LoginPassword.getStringCellValue();
             }
 
             HSSFCell RePassword= row.getCell(16);
             if (RePassword == null) {
-                data[i - 1][16] = "";
+                data[i - 2][16] = "";
             } else {
                 RePassword.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][16] = RePassword.getStringCellValue();
+                data[i - 2][16] = RePassword.getStringCellValue();
             }
 
             HSSFCell Applican = row.getCell(17);
             if (Applican == null) {
-                data[i - 1][17] = "";
+                data[i - 2][17] = "";
             } else {
                 Applican.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][17] = Applican.getStringCellValue();
+                data[i - 2][17] = Applican.getStringCellValue();
             }
 
             HSSFCell Expeted= row.getCell(18);
             if (Expeted == null) {
-                data[i - 1][18] = "";
+                data[i - 2][18] = "";
             } else {
                 Expeted.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][18] = Expeted.getStringCellValue();
+                data[i - 2][18] = Expeted.getStringCellValue();
             }
         }
         return data;
