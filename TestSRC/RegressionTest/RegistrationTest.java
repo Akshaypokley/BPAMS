@@ -27,7 +27,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.awt.Label;
+//import java.awt.Label;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -37,7 +37,7 @@ import java.text.ParseException;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
+import jxl.write.Label;
 import static Utilities.AlertFunction.AlerFun;
 import static Utilities.AttachFunction.AttachFuntn;
 import static Utilities.DateFunction.DateFun;
@@ -220,7 +220,7 @@ public class RegistrationTest extends ExcelsheetTest{
             driver.switchTo().window(WinHandleBefore1);
 
             appRegistration.setRegitrationNo(REgNo); test.log(LogStatus.INFO, " Set RegiNO");
-            DateFun(driver,"13/5/2017");
+            DateFun(driver,"16/5/2017");
                     appRegistration.setLoginNm(LoginName); test.log(LogStatus.INFO, " Set UserName");
                     appRegistration.setPassword(Password); test.log(LogStatus.INFO, " Set Password");
                     appRegistration.setRePass(RePassword); test.log(LogStatus.INFO, " Set RePassword");
@@ -228,7 +228,7 @@ public class RegistrationTest extends ExcelsheetTest{
                     appRegistration.clickAcceptTC(); test.log(LogStatus.INFO, "Accept Terms and Condition");
                     appRegistration.ClickSubmit(); test.log(LogStatus.INFO, "Click on Submit Button");
 
-                    Thread.sleep(70);
+                    Thread.sleep(80);
                     AlerFun(driver);
                     try {
 
@@ -247,7 +247,7 @@ public class RegistrationTest extends ExcelsheetTest{
                             {
                                 TestCase =Actual;
 
-                                jxl.write.Label l4 = new jxl.write.Label(20, LastRow, TestCase);
+                               Label l4 = new Label(19, LastRow, TestCase);
                                 WriteTableS.addCell(l4);
                                 //  Assert.assertEquals(alertmessage, Expected, "Test pass");
                                 int LastRow1 = ++j;
@@ -256,12 +256,12 @@ public class RegistrationTest extends ExcelsheetTest{
                                 {
 
 
-                                    jxl.write.Label l5 = new jxl.write.Label(21,LastRow1, "PASS",cellFormat);
+                                   Label l5 = new Label(20,LastRow1, "PASS",cellFormat);
                                     WriteTableS.addCell(l5);
                                 }else
                                 {
 
-                                    jxl.write.Label l5 = new jxl.write.Label(21, LastRow1, "FAIL",cellFormat2);
+                                  Label l5 = new Label(20, LastRow1, "FAIL",cellFormat2);
                                     WriteTableS.addCell(l5);
                                 }
                                 Assert.assertEquals(Actual,EX, "Test pass");
@@ -278,6 +278,10 @@ public class RegistrationTest extends ExcelsheetTest{
                 {
                     test.log(LogStatus.FAIL, "Element not found : "+e);
                     test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./Registration/"+takeScreenshot(driver)));
+
+                }
+                catch(NullPointerException e)
+                {
 
                 }
         extent.endTest(test);

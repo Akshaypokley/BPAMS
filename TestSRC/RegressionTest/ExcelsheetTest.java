@@ -33,6 +33,7 @@ public class ExcelsheetTest {
     public WritableCellFormat cellFormat;
     public WritableCellFormat cellFormat2;
     public WritableCellFormat cellFormat3;
+    public WritableCellFormat cellFormat4;
     public Sheet sheet;
     @BeforeTest
     public void ExcelWdata() throws IOException, BiffException, WriteException {
@@ -71,6 +72,9 @@ public class ExcelsheetTest {
                 cellFont2.setColour(RED);
                 Label l2=new Label(19,1,"Actual Message");
                 Label l3=new Label(20,1,"Result");
+
+
+
 
                // Label l6=new Label(7,,"TestCase Fail Due To");
                WriteTableS.addCell(l1);
