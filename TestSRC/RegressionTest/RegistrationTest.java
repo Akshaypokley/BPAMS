@@ -306,7 +306,7 @@ public class RegistrationTest extends ExcelsheetTest{
 
         int RowCount = sheet.getPhysicalNumberOfRows();
 
-        String data[][] = new String[RowCount - 1][19];
+        String data[][] = new String[RowCount - 2][19];
 
         for (int i = 2; i < RowCount; i++)
 

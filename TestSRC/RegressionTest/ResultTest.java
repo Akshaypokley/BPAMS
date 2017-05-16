@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * Created by laxmikant on 06/05/2017.
  */
-public class ResultTest extends ExcelsheetTest {
+public class ResultTest extends ExcelCF {
     WebDriver driver;
     String result;
 
@@ -45,7 +45,7 @@ public static String status="Pass";
     private static int h = 0;
     private static int lastrow;
     @Test(dataProvider = "UserInput")
-    public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException, WriteException
+    public void RegistratTest(String Prifi, String FirstNM, String MiddNM, String LastNm, String Expected/*String Result2*/) throws IOException, WriteException, InterruptedException
 
     {
         driver = openBrowser("chrome");
@@ -75,25 +75,27 @@ public static String status="Pass";
                     System.out.println(alertmessage);
 
                     int LastRow = ++n;
-                    {
+                    { Thread.sleep(70);
                         TestCase = alertmessage;
 
                         Label l4 = new Label(5, LastRow, TestCase);
-                        WriteTableS.addCell(l4);
+                        targetSheet.addCell(l4);
+
+
                       //  Assert.assertEquals(alertmessage, Expected, "Test pass");
                         int LastRow1 = ++j;
 
                         if(alertmessage.equals(Expected))
                         {
 
-
+                            Thread.sleep(70);
                             Label l5 = new Label(6,LastRow1, "PASS",cellFormat);
-                            WriteTableS.addCell(l5);
+                            targetSheet.addCell(l5);
                         }else
                         {
-
+                            Thread.sleep(70);
                             Label l5 = new Label(6, LastRow1, "FAIL",cellFormat2);
-                            WriteTableS.addCell(l5);
+                            targetSheet.addCell(l5);
                         }
                         Assert.assertEquals(alertmessage, Expected, "Test pass");
                       lastrow=++h;
