@@ -49,7 +49,7 @@ import static Utilities.Windowhander.NewWindow;
 /**
  * Created by AKSHAY on 01/05/2017.
  */
-public class RegistrationTest extends ExcelsheetTest{
+public class RegistrationTest extends ExcelSheetT {
 
     WebDriver driver;
     ExtentReports extent ;
@@ -220,7 +220,7 @@ public class RegistrationTest extends ExcelsheetTest{
             driver.switchTo().window(WinHandleBefore1);
 
             appRegistration.setRegitrationNo(REgNo); test.log(LogStatus.INFO, " Set RegiNO");
-            DateFun(driver,"16/5/2017");
+            DateFun(driver,"20/5/2017");
                     appRegistration.setLoginNm(LoginName); test.log(LogStatus.INFO, " Set UserName");
                     appRegistration.setPassword(Password); test.log(LogStatus.INFO, " Set Password");
                     appRegistration.setRePass(RePassword); test.log(LogStatus.INFO, " Set RePassword");
@@ -228,7 +228,7 @@ public class RegistrationTest extends ExcelsheetTest{
                     appRegistration.clickAcceptTC(); test.log(LogStatus.INFO, "Accept Terms and Condition");
                     appRegistration.ClickSubmit(); test.log(LogStatus.INFO, "Click on Submit Button");
 
-                    Thread.sleep(80);
+                    Thread.sleep(90);
                     AlerFun(driver);
                     try {
 
@@ -248,7 +248,7 @@ public class RegistrationTest extends ExcelsheetTest{
                                 TestCase =Actual;
 
                                Label l4 = new Label(19, LastRow, TestCase);
-                                WriteTableS.addCell(l4);
+                                targetSheet.addCell(l4);
                                 //  Assert.assertEquals(alertmessage, Expected, "Test pass");
                                 int LastRow1 = ++j;
 
@@ -257,12 +257,12 @@ public class RegistrationTest extends ExcelsheetTest{
 
 
                                    Label l5 = new Label(20,LastRow1, "PASS",cellFormat);
-                                    WriteTableS.addCell(l5);
+                                    targetSheet.addCell(l5);
                                 }else
                                 {
 
                                   Label l5 = new Label(20, LastRow1, "FAIL",cellFormat2);
-                                    WriteTableS.addCell(l5);
+                                    targetSheet.addCell(l5);
                                 }
                                 Assert.assertEquals(Actual,EX, "Test pass");
                                 //lastrow=++h;

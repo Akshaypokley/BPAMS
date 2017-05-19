@@ -37,10 +37,7 @@ public class ResultTest extends ExcelCF {
     int i;
 public static String status="Pass";
     public HSSFWorkbook workbook;
-   /* @BeforeMethod
-    public void l() {
-    }
-*/    private static int n = 1;
+    private static int n = 1;
     private static int j = 1;
     private static int h = 0;
     private static int lastrow;
@@ -70,38 +67,36 @@ public static String status="Pass";
                 } else {
 
                     Alert alert = driver.switchTo().alert();
-                  String  alertmessage = driver.switchTo().alert().getText();
+                    String alertmessage = driver.switchTo().alert().getText();
                     alert.accept();
-                    System.out.println(alertmessage);
+
 
                     int LastRow = ++n;
-                    { Thread.sleep(70);
+                    {
+                        // Thread.sleep(70);
                         TestCase = alertmessage;
 
-                        Label l4 = new Label(5, LastRow, TestCase);
+                        Label l4 = new Label(5, LastRow, TestCase,cellFormat1);
                         targetSheet.addCell(l4);
+                        System.out.println(alertmessage);
 
-
-                      //  Assert.assertEquals(alertmessage, Expected, "Test pass");
+                        //  Assert.assertEquals(alertmessage, Expected, "Test pass");
                         int LastRow1 = ++j;
 
-                        if(alertmessage.equals(Expected))
-                        {
+                        if (alertmessage.equals(Expected)) {
 
                             Thread.sleep(70);
-                            Label l5 = new Label(6,LastRow1, "PASS",cellFormat);
+                            Label l5 = new Label(6, LastRow1, "PASS", cellFormat);
                             targetSheet.addCell(l5);
-                        }else
-                        {
+                        } else {
                             Thread.sleep(70);
-                            Label l5 = new Label(6, LastRow1, "FAIL",cellFormat2);
+                            Label l5 = new Label(6, LastRow1, "FAIL", cellFormat2);
                             targetSheet.addCell(l5);
                         }
                         Assert.assertEquals(alertmessage, Expected, "Test pass");
-                      lastrow=++h;
-                    }
+                        lastrow = ++h;
                     //    ShowR(driver,result, alertmessage);
-
+                    }
                 }
             } catch (NoSuchElementException e) {
                 System.out.println(e);
