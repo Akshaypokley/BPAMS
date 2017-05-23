@@ -71,6 +71,7 @@ public class RegistrationTest extends ExcelSheetT {
     ) throws IOException, AWTException, InterruptedException, ParseException, WriteException
 
     {
+
         ExtentTest test = extent.startTest("Registration Page Test", "To Test the functionalty of Submit button");
 
         AppRegistration appRegistration = new AppRegistration(driver);
@@ -79,8 +80,28 @@ public class RegistrationTest extends ExcelSheetT {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         appRegistration.setRegistrationLink();
         test.log(LogStatus.INFO, " Click On Registration link");
-        NewWindow(driver);
-        test.log(LogStatus.INFO, " Handel New Driver");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        Thread.sleep(70);
+        NewWindow( driver);
+        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+/*
+        String WinHandleBefore1 = driver.getWindowHandle();
+        // Switch to new window opened
+        for (String Handle1 : driver.getWindowHandles()) {
+            driver.switchTo().window(Handle1);
+        }
+
+        try {
+            Thread.sleep(5000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+*/
+
 
         try {
 
@@ -114,10 +135,10 @@ public class RegistrationTest extends ExcelSheetT {
             test.log(LogStatus.INFO, " Set ID proof");
             driver.findElement(By.id("IdattachIdproof")).click();
 
-            String WinHandleBefore1 = driver.getWindowHandle();
+            String WinHandleBefore = driver.getWindowHandle();
             // Switch to new window opened
-            for (String Handle1 : driver.getWindowHandles()) {
-                driver.switchTo().window(Handle1);
+            for (String Handle2 : driver.getWindowHandles()) {
+                driver.switchTo().window(Handle2);
             }
 
             try {
@@ -166,7 +187,7 @@ public class RegistrationTest extends ExcelSheetT {
             Thread.sleep(700);
             //WebDriverWait wait = new WebDriverWait(driver,1000);
 
-            driver.switchTo().window(WinHandleBefore1);          // switch back to the original window
+            driver.switchTo().window(WinHandleBefore);          // switch back to the original window
             driver.findElement(By.id("btnAttached")).click();
             String WinHandleBefore3 = driver.getWindowHandle();
             // Switch to new window opened
@@ -217,10 +238,10 @@ public class RegistrationTest extends ExcelSheetT {
 
             }
             Thread.sleep(700);
-            driver.switchTo().window(WinHandleBefore1);
+            driver.switchTo().window(WinHandleBefore);
 
             appRegistration.setRegitrationNo(REgNo); test.log(LogStatus.INFO, " Set RegiNO");
-            DateFun(driver,"20/5/2017");
+            DateFun(driver,"24/5/2017");
                     appRegistration.setLoginNm(LoginName); test.log(LogStatus.INFO, " Set UserName");
                     appRegistration.setPassword(Password); test.log(LogStatus.INFO, " Set Password");
                     appRegistration.setRePass(RePassword); test.log(LogStatus.INFO, " Set RePassword");
@@ -228,7 +249,7 @@ public class RegistrationTest extends ExcelSheetT {
                     appRegistration.clickAcceptTC(); test.log(LogStatus.INFO, "Accept Terms and Condition");
                     appRegistration.ClickSubmit(); test.log(LogStatus.INFO, "Click on Submit Button");
 
-                    Thread.sleep(90);
+                    Thread.sleep(100);
                     AlerFun(driver);
                     try {
 
@@ -247,7 +268,7 @@ public class RegistrationTest extends ExcelSheetT {
                             {
                                 TestCase =Actual;
 
-                               Label l4 = new Label(19, LastRow, TestCase);
+                               Label l4 = new Label(19, LastRow, TestCase,cellFormat1);
                                 targetSheet.addCell(l4);
                                 //  Assert.assertEquals(alertmessage, Expected, "Test pass");
                                 int LastRow1 = ++j;

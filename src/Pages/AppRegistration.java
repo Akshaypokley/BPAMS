@@ -44,7 +44,7 @@ public class AppRegistration {
     @FindBy(xpath = ".//*[@id='imgApprovalLayout']/div/a/img")
     WebElement RegistrationLink;
 
-    @FindBy(xpath = ".//*[@id='cboInital']")
+    @FindBy(xpath=".//*[@id='cboInital']")
     WebElement PriFix ;
 
     @FindBy(xpath = ".//*[@id='txtFName']")

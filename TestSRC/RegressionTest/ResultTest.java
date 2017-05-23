@@ -50,10 +50,20 @@ public static String status="Pass";
         AppRegistration appRegistration = new AppRegistration(driver);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         appRegistration.setRegistrationLink();
-        NewWindow(driver);
+
+        String parentHandle = driver.getWindowHandle(); // get the current window handle
+
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's your newly opened window)
+        }
+
         try {
 
-            appRegistration.setPriFix(Prifi);
+
+            //  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+           appRegistration.setPriFix(Prifi);
+           driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+
             appRegistration.setFirstNm(FirstNM);
             appRegistration.setMiddleNM(MiddNM);
             appRegistration.setLastNM(LastNm);
